@@ -35,7 +35,9 @@ func main() {
 	time.Sleep(58 * time.Second)
 	// 58 55
 
+	tttt := time.Now()
 	login(*id, *pw)
+	fmt.Println(time.Since(tttt))
 
 	ok := false
 	n := 0
