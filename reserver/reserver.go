@@ -33,7 +33,7 @@ func main() {
 	t := time.Now()
 	if !*debug {
 		fmt.Println("Beginning delay.")
-		time.Sleep(57 * time.Second)
+		time.Sleep(56 * time.Second)
 		fmt.Printf("%s delay done.\n", time.Since(t))
 	}
 
