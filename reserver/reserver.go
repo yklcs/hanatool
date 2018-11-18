@@ -33,7 +33,7 @@ func main() {
 	t := time.Now()
 	if !*debug {
 		fmt.Println("Beginning delay.")
-		time.Sleep(56 * time.Second)
+		time.Sleep(57 * time.Second)
 		fmt.Printf("%s delay done.\n", time.Since(t))
 	}
 
@@ -45,17 +45,19 @@ func main() {
 	ok := false
 	n := 1
 
-	for !ok && n <= 25 {
-		ttt := time.Now()
+	ttt := time.Now()
+	for !ok && n <= 30 {
+		tttt := time.Now()
 		if reserve(*sCode, *tCode1) && reserve(*sCode, *tCode2) {
 			ok = true
 			break
 		}
-		fmt.Printf("Request took %s\n", time.Since(ttt))
+		fmt.Printf("Request took %s\n", time.Since(tttt))
 		fmt.Printf("Failed, retrying... Attempt %d\n", n)
 		n++
-		time.Sleep(200 * time.Millisecond)
+		time.Sleep(100 * time.Millisecond)
 	}
+	fmt.Printf("Requests complete in %s\n", time.Since(ttt))
 
 	if ok {
 		fmt.Println("Success!")
