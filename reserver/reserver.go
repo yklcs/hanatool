@@ -30,9 +30,9 @@ func main() {
 		os.Exit(1)
 	}
 
+	t := time.Now()
 	if *debug {
 		fmt.Println("Beginning delay.")
-		t := time.Now()
 		time.Sleep(56 * time.Second)
 		fmt.Printf("%s delay done.\n", time.Since(t))
 	}
@@ -61,7 +61,7 @@ func main() {
 		fmt.Println("Success!")
 		os.Exit(0)
 	} else {
-		fmt.Printf("Error... Exited.")
+		fmt.Printf("Error... Exited in %s\n", time.Since(t))
 	}
 }
 
