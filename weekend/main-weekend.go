@@ -6,6 +6,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/http/cookiejar"
+	"os"
 	"strings"
 	"time"
 )
@@ -24,6 +25,11 @@ func main() {
 	flag.Parse()
 	// 0 -3
 
+	if *id == "" || *pw == "" {
+		fmt.Println("Please re-check all flags.")
+		os.Exit(1)
+	}
+
 	tt := time.Now()
 
 	time.Sleep(58 * time.Second)
@@ -34,6 +40,7 @@ func main() {
 	ok := false
 	n := 0
 
+	ttt := time.Now()
 	for !ok && n < 20 {
 		t := time.Now()
 		if reserve(96, 7) && reserve(96, 9) {
@@ -47,6 +54,7 @@ func main() {
 	}
 
 	fmt.Println(time.Since(tt))
+	fmt.Println(time.Since(ttt))
 	if ok {
 		fmt.Println("Success!")
 	} else {
