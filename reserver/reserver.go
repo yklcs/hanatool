@@ -16,11 +16,13 @@ var cookieJar, _ = cookiejar.New(nil)
 var client = &http.Client{Jar: cookieJar}
 
 func main() {
+	fmt.Printf("Program starting at %s\n", time.Now().Format(time.RFC850))
+
 	id := flag.String("id", "", "Username/ID")
 	pw := flag.String("pw", "", "Password")
-	sCode := flag.Int("seat", 96, "seat code")
-	tCode1 := flag.Int("time1", 7, "time code 1")
-	tCode2 := flag.Int("time2", 9, "time code 2")
+	sCode := flag.Int("seat", 84, "seat code")
+	tCode1 := flag.Int("time1", 1, "time code 1")
+	tCode2 := flag.Int("time2", 4, "time code 2")
 	debug := flag.Bool("debug", false, "debugging mode")
 
 	flag.Parse()
@@ -40,6 +42,7 @@ func main() {
 	tt := time.Now()
 	fmt.Println("Logging in...")
 	login(*id, *pw)
+	fmt.Printf("Logged in at %s\n", time.Now().Format(time.RFC850))
 	fmt.Printf("%s to attempt login.\n", time.Since(tt))
 
 	ok := false
@@ -49,6 +52,7 @@ func main() {
 	for !ok && n <= 30 {
 		tttt := time.Now()
 		if reserve(*sCode, *tCode1) && reserve(*sCode, *tCode2) {
+			fmt.Printf("Reserved successfully at %s", time.Now().Format(time.RFC850))
 			ok = true
 			break
 		}
@@ -63,7 +67,7 @@ func main() {
 		fmt.Println("Success!")
 		os.Exit(0)
 	} else {
-		fmt.Printf("Error... Exited in %s\n", time.Since(t))
+		fmt.Printf("Error... Exited in %s. Current time is %s.\n", time.Since(t), time.Now().Format(time.RFC850))
 	}
 }
 
