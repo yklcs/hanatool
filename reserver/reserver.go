@@ -35,7 +35,7 @@ func main() {
 	t := time.Now()
 	if !*debug {
 		fmt.Println("Beginning delay.")
-		time.Sleep(56 * time.Second)
+		time.Sleep(5550 * time.Millisecond)
 		fmt.Printf("%s delay done.\n", time.Since(t))
 	}
 
@@ -113,6 +113,8 @@ func reserve(sCode, tCode int) bool {
 
 	defer res.Body.Close()
 	body, _ := ioutil.ReadAll(res.Body)
+
+	fmt.Println(string(body))
 
 	if strings.Contains(string(body), "되었습니다") {
 		fmt.Println("Successful.")
