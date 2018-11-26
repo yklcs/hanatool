@@ -35,7 +35,7 @@ func main() {
 	t := time.Now()
 	if !*debug {
 		fmt.Println("Beginning delay.")
-		time.Sleep(5550 * time.Millisecond)
+		time.Sleep(55500 * time.Millisecond)
 		fmt.Printf("%s delay done.\n", time.Since(t))
 	}
 
@@ -59,7 +59,7 @@ func main() {
 		fmt.Printf("Request took %s\n", time.Since(tttt))
 		fmt.Printf("Failed, retrying... Attempt %d\n", n)
 		n++
-		time.Sleep(100 * time.Millisecond)
+		time.Sleep(150 * time.Millisecond)
 	}
 	fmt.Printf("Requests complete in %s\n", time.Since(ttt))
 
