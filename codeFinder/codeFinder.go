@@ -77,7 +77,7 @@ func getTimeCode(time int, isWeekEnd bool) int {
 		}
 	} else {
 		if time == 0 {
-			tCode = 0
+			tCode = 28
 		} else if time == 1 {
 			tCode = 1
 		} else if time == 2 {
