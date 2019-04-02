@@ -11,7 +11,7 @@ import (
 	"net/http"
 	"net/http/cookiejar"
 
-	"hanatool/utils"
+	"github.com/rocketll/hanatool/utils"
 )
 
 var cookieJar, _ = cookiejar.New(nil)
