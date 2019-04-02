@@ -1,3 +1,10 @@
+/*
+TODO: Edit API to use go.hana.hs.kr
+
+
+
+
+*/
 package main
 
 import (
@@ -26,6 +33,8 @@ func main() {
 	sCode := flag.Int("seat", 84, "seat code")
 	tCode1 := flag.Int("time1", 1, "time code 1")
 	tCode2 := flag.Int("time2", 4, "time code 2")
+	min := flag.Int("min", 59, "minute")
+	sec := flag.Int("sec", 59, "second")
 
 	flag.Parse()
 
@@ -39,8 +48,8 @@ func main() {
 	login(*id, *pw)
 	fmt.Printf("Logged in and beginning wait at %s\n", time.Now().Format(time.RFC3339Nano))
 
-	for i := 0; i < 1500; i++ {
-		if time.Now().Minute() == 59 && time.Now().Second() == 59 {
+	for i := 0; i < 2000; i++ {
+		if time.Now().Minute() == *min && time.Now().Second() == *sec {
 			t := time.Now()
 			for j := 0; j < tries; j++ {
 				wg1.Add(1)
