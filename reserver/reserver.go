@@ -25,7 +25,6 @@ var client = &http.Client{Jar: cookieJar}
 func main() {
 	fmt.Printf("Program starting at %s\n", time.Now().Format(time.RFC3339Nano))
 
-	tries := 25
 	var wg1, wg2 sync.WaitGroup
 
 	id := flag.String("id", "", "Username/ID")
@@ -35,6 +34,7 @@ func main() {
 	tCode2 := flag.Int("time2", 4, "time code 2")
 	min := flag.Int("min", 59, "minute")
 	sec := flag.Int("sec", 59, "second")
+	tries := flag.Int("tries", 25, "tries")
 
 	flag.Parse()
 
@@ -51,7 +51,7 @@ func main() {
 	for i := 0; i < 2000; i++ {
 		if time.Now().Minute() == *min && time.Now().Second() == *sec {
 			t := time.Now()
-			for j := 0; j < tries; j++ {
+			for j := 0; j < *tries; j++ {
 				wg1.Add(1)
 				wg2.Add(1)
 				go func() {
