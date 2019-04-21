@@ -19,7 +19,7 @@ var client = &http.Client{Jar: cookieJar}
 
 func main() {
 	utils.Client = client
-	res := utils.Login("rocketll", "yk8525yk")
+	res := utils.Login("id", "pw")
 	utils.Response(res)
 
 }
